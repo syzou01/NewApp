@@ -16,7 +16,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:gravity="center"
-        android:text="@string/team_label"
+        android:text="@string/tempName"
         android:textSize="30sp" />
 
     <EditText
