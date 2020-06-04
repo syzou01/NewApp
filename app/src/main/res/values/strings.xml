@@ -1,0 +1,7 @@
+<resources>
+        <string name="app_name">SecondApp</string>
+        <string name="tempName">Temperature Convert</string>
+        <string name="hint">Please Enter degree centigrade</string>
+        <string name="convert">Convert To Fehrenheit Degree</string>
+        <string name="result">"The Result is: "</string>
+</resources>
