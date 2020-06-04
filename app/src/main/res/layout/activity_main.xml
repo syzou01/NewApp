@@ -16,7 +16,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:gravity="center"
-        android:text="@string/tempName"
+        android:text="@string/team_label"
         android:textSize="30sp" />
 
     <EditText
@@ -29,9 +29,9 @@
         android:layout_marginRight="20dp"
         android:gravity="center"
         android:hint="@string/hint"
-        android:autofillHints="@string/hint"
         android:inputType="textPersonName"
-        android:textSize="18sp" />
+        android:autofillHints="@string/hint"
+        android:textSize="25sp" />
 
     <Button
         android:id="@+id/button"
@@ -50,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:gravity="left"
+        android:gravity="start"
         android:layout_marginStart="20dp"
         android:text="@string/result"
         android:textSize="35sp" />
@@ -61,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:gravity="left"
+        android:gravity="start"
         android:textSize="35sp" />
 
 </LinearLayout>
