@@ -39,6 +39,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:onClick="btn3"
             android:text="@string/btn3_label" />
 
@@ -46,6 +48,8 @@
             android:id="@+id/btn2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginBottom="16dp"
             android:onClick="btn2"
             android:text="@string/btn2_label" />
@@ -55,6 +59,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:onClick="btn1"
             android:id="@+id/btn1" />
     </LinearLayout>
@@ -69,5 +75,7 @@
         android:layout_marginBottom="80dp"
         android:gravity="center"
         android:onClick="btnReset"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
         android:text="@string/btn_reset_label" />
 </RelativeLayout>
