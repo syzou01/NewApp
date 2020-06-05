@@ -33,9 +33,13 @@ public class RateListActivity extends ListActivity implements  Runnable{
         super.onCreate(savedInstanceState);
         // setContentView(R.layout.activity_rate_list); 父类已包含页面布局，不需要填充
 
-        List<String> list1 = new ArrayList <String>();
+        /*List<String> list1 = new ArrayList <String>();
         ListAdapter adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,list1);
-        setListAdapter(adapter);
+        setListAdapter(adapter);*/
+
+        SharedPreferences sp = getSharedPreferences("myrate",Context.MODE_PRIVATE);
+        logDate = sp.getString(DATE_SP_KEY,"");
+        Log.i("List","lastRateDateStr="+logDate);
 
         Thread thread = new Thread(this);
         thread.start();
@@ -52,32 +56,61 @@ public class RateListActivity extends ListActivity implements  Runnable{
             }
         };
     }
+
     @Override
     public  void run(){
         //获取网络数据，放入到list中，带回主线程
         List<String> retList = new ArrayList <String>();
 
-        //从网络中获取数据
-        Document doc = null;
-        try {
-            doc = Jsoup.connect("http://www.usd-cny.com/bankofchina.htm").get();  // 使用此方法时，不用再写上方获取网络信息的语句
-            Log.i(TAG,"run:  "+ doc.title());
-            Elements tables = doc.getElementsByTag("table");
-            Element table1 = tables.get(0);
-            Elements tds = table1.getElementsByTag("td");
+        String curDateStr = (new SimpleDateFormat("yyyy-MM-dd")).format(new Date());
+        Log.i("run","curDateStr:"+ curDateStr+ "logDate:" + logDate);
 
-            for(int i=0;i<tds.size();i+=6){
-                Element td1 = tds.get(i);
-                Element td2 = tds.get(i+5);
-                String str1 = td1.text();
-                String val = td2.text();
-                Log.i(TAG,"run: "+str1+"==>"+val);
-                retList.add(str1+"==>"+val);
+        if(curDateStr.equals(logDate)){
+            //相等，从数据库获取数据
+            Log.i("runDB","日期相等，从数据库获取数据");
+            RateManager manager = new RateManager(this);
+            for(RateItem item : manager.listAll()){
+                retList.add(item.getCurName()+"-->"+item.getCurRate());
+            }
+
+        }else {
+            //从网络中获取数据
+            Document doc = null;
+            try {
+                doc = Jsoup.connect("http://www.usd-cny.com/bankofchina.htm").get();  // 使用此方法时，不用再写上方获取网络信息的语句
+                Log.i(TAG,"run:  "+ doc.title());
+                Elements tables = doc.getElementsByTag("table");
+                Element table1 = tables.get(0);
+                Elements tds = table1.getElementsByTag("td");
+                List<RateItem> rateList = new ArrayList <RateItem>();
+
+                for(int i=0;i<tds.size();i+=6){
+                    Element td1 = tds.get(i);
+                    Element td2 = tds.get(i+5);
+                    String str1 = td1.text();
+                    String val = td2.text();
+                    Log.i(TAG,"run: "+str1+"==>"+val);
+                    retList.add(str1+"==>"+val);
+                    rateList.add(new RateItem(str1,val));
                 }
+
+                //把数据写入数据库
+                RateManager manager = new RateManager(this);
+                manager.deleteAll();
+                manager.addAll(rateList);
+
+                //更新记录日期
+                SharedPreferences sp = getSharedPreferences("myrate",Context.MODE_PRIVATE);
+                SharedPreferences.Editor edit = sp.edit();
+                edit.putString(DATE_SP_KEY,curDateStr);
+                edit.commit();
+                Log.i("runDB","更新日期结束："+curDateStr);
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+
 
         Message msg = handler.obtainMessage(7);
         msg.obj = retList;
