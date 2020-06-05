@@ -1,6 +1,7 @@
 package com.swufe.newapp;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -12,6 +13,7 @@ public class ScoreCountActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score_count);
+        Log.i("ScoreCount", "onCreate: ");
     }
 
     TextView score1=(TextView)findViewById(R.id.score1);
@@ -57,4 +59,63 @@ public class ScoreCountActivity extends AppCompatActivity {
         String newScore = String.valueOf(Integer.parseInt(oldScore) + i);
         score2.setText(""+ newScore);
     }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i("ScoreCount", "onStart: ");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("ScoreCount", "onResume: ");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i("ScoreCount", "onRestart: ");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i("ScoreCount", "onPause: ");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i("ScoreCount", "onStop: ");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i("ScoreCount", "onDestroy: ");
+    }
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        String scorea = ((TextView)findViewById(R.id.score1)).getText().toString();
+        String scoreb = ((TextView)findViewById(R.id.score2)).getText().toString();
+
+        Log.i("ScoreCount", "onSaveInstanceState: ");
+        outState.putString("teama_score",scorea);
+        outState.putString("teamb_score",scoreb);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        String scorea = savedInstanceState.getString("teama_score");
+        String scoreb = savedInstanceState.getString("teamb_score");
+
+        Log.i("ScoreCount", "onRestoreInstanceState: ");
+        ((TextView)findViewById(R.id.score1)).setText(scorea);
+        ((TextView)findViewById(R.id.score2)).setText(scoreb);
+    }
+
 }
