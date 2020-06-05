@@ -32,6 +32,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class RateActivity extends AppCompatActivity implements View.OnClickListener,Runnable {
 
@@ -41,6 +44,7 @@ public class RateActivity extends AppCompatActivity implements View.OnClickListe
     private float dollarRate = 0.1f;
     private float euroRate = 0.2f;
     private float wonRate = 0.3f;
+    private  String updateDate = "";
 
     EditText rmb;
     TextView show;
@@ -49,7 +53,9 @@ public class RateActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate);
+
         Log.i(TAG, "onCreate: ");
+
 
 
         rmb = (EditText) findViewById(R.id.rmb);
@@ -65,15 +71,51 @@ public class RateActivity extends AppCompatActivity implements View.OnClickListe
         Log.i(TAG, "onCreate: sp euroRate=" + euroRate);
         Log.i(TAG, "onCreate: sp wonRate=" + wonRate);
 
-        Thread t = new Thread(this);
-        t.start();
+        //获取当前系统时间
+        // new Date();  //或者
+        Date today = Calendar.getInstance().getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); //"yyyyMMdd" 也行，小写的m表示分钟
+        final String todayStr = sdf.format(today);
+
+        Log.i(TAG,"OnCreat: sp dollarRate=" +dollarRate);
+        Log.i(TAG,"OnCreat: sp euroRate=" +euroRate);
+        Log.i(TAG,"OnCreat: sp wonRate=" +wonRate);
+        Log.i(TAG,"OnCreat: sp updateDate=" +updateDate);
+        Log.i(TAG,"OnCreat: sp todayStr=" +todayStr);
+
+        ///判断时间
+        if(!todayStr.equals(updateDate)){
+            Log.i(TAG,"OnCreat: 需要更新");
+            //开启子线程
+            Thread t = new Thread(this);
+            t.start();
+        }else {
+            Log.i(TAG,"OnCreat: 不需要更新");
+        }
 
         handler = new Handler(){
             @Override
             public void handleMessage(Message msg) {
                 if(msg.what==5){
+                    Bundle bd1= (Bundle) msg.obj;
+                    dollarRate=bd1.getFloat("dollar-rate");
+                    euroRate=bd1.getFloat("euro-rate");
+                    wonRate=bd1.getFloat("won-rate");
 
-                    Log.i(TAG,"handleMessage:"+msg.obj);
+                    Log.i(TAG,"handleMessage: dollarRate:"+dollarRate);
+                    Log.i(TAG,"handleMessage: euroRate:"+euroRate);
+                    Log.i(TAG,"handleMessage: wonRate:"+wonRate);
+
+                    //保存更新的日期
+                    SharedPreferences sharedPreferences = getSharedPreferences("myrate",Activity.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putFloat("dollar_rate",dollarRate);
+                    editor.putFloat("euro_rate",euroRate);
+                    editor.putFloat("won_rate",wonRate);
+                    editor.putString("update_date",todayStr);
+                    editor.apply();
+
+                    Toast.makeText(RateActivity.this,"汇率已经更新",Toast.LENGTH_SHORT).show();
                 }
                 super.handleMessage(msg);
             }
@@ -82,7 +124,6 @@ public class RateActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View btn) {
-        Log.i(TAG, "onClick: ");
         String str = rmb.getText().toString();
         Log.i(TAG, "onClick: get str=" + str);
 
