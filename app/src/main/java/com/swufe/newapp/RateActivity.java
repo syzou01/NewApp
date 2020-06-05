@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.DecimalFormat;
+
 public class RateActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView mTextView;
@@ -47,13 +49,15 @@ public class RateActivity extends AppCompatActivity implements View.OnClickListe
 
         Log.i(TAG, "onClick: r=" + r);
 
+        DecimalFormat df = new DecimalFormat("#.00");
+
         //计算
         if(btn.getId()==R.id.dollar){
-            show.setText(String.valueOf(r*dollarRate));
+            show.setText(df.format(r*dollarRate));
         }else if(btn.getId()==R.id.euro){
-            show.setText(String.valueOf(r*euroRate));
+            show.setText(df.format(r*euroRate));
         }else{
-            show.setText(String.valueOf(r*wonRate));
+            show.setText(df.format(r*wonRate));
         }
     }
 }
