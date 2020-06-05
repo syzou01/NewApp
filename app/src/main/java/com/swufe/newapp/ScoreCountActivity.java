@@ -14,6 +14,9 @@ public class ScoreCountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_score_count);
     }
 
+    TextView score1=(TextView)findViewById(R.id.score1);
+    TextView score2=(TextView)findViewById(R.id.score2);
+
 
     public void btn1(View v) {
         if(v.getId()==R.id.btn1a)
@@ -23,14 +26,14 @@ public class ScoreCountActivity extends AppCompatActivity {
     }
 
     public void btn2(View v) {
-        if(v.getId()==R.id.btn1a)
+        if(v.getId()==R.id.btn2a)
             show1(2);
         else
             show2(2);
     }
 
     public void btn3(View v) {
-        if(v.getId()==R.id.btn1a)
+        if(v.getId()==R.id.btn3a)
             show1(3);
         else
             show2(3);
@@ -44,16 +47,14 @@ public class ScoreCountActivity extends AppCompatActivity {
     }
 
     private void show1(int i){
-        TextView out = (TextView)findViewById(R.id.score1);
-        String oldScore = (String) out.getText();
+        String oldScore = (String) score1.getText();
         String newScore = String.valueOf(Integer.parseInt(oldScore) + i);
-        out.setText(newScore);
+        score1.setText(newScore);
     }
 
     private void show2(int i){
-        TextView out = (TextView)findViewById(R.id.score2);
-        String oldScore = (String) out.getText();
+        String oldScore = (String) score2.getText();
         String newScore = String.valueOf(Integer.parseInt(oldScore) + i);
-        out.setText(newScore);
+        score2.setText(""+ newScore);
     }
 }

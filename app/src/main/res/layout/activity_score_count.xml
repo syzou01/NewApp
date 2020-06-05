@@ -44,7 +44,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="16dp"
-            android:onClick="btn3a"
+            android:onClick="btn3"
             android:text="@string/btn3_label" />
 
         <Button
@@ -54,7 +54,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="16dp"
-            android:onClick="btn2a"
+            android:onClick="btn2"
             android:text="@string/btn2_label" />
 
         <Button
@@ -64,7 +64,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="16dp"
-            android:onClick="btn1a"
+            android:onClick="btn1"
             android:text="@string/btn1_label" />
     </LinearLayout>
     
@@ -107,7 +107,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="16dp"
-            android:onClick="btn3b"
+            android:onClick="btn3"
             android:text="@string/btn3_label" />
 
         <Button
@@ -117,7 +117,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="16dp"
-            android:onClick="btn2b"
+            android:onClick="btn2"
             android:text="@string/btn2_label" />
 
         <Button
@@ -127,7 +127,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="16dp"
-            android:onClick="btn1b"
+            android:onClick="btn1"
             android:text="@string/btn1_label" />
     </LinearLayout>
 </LinearLayout>
