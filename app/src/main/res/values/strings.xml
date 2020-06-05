@@ -19,6 +19,10 @@
     <string name="rmb_hint_label">Input RMB</string>
     <string name="btn_save_label">SAVE</string>
     <string name="btn_opencfg_label">Config</string>
+    <string name="keyWordEnter">学院官网通知公告查询</string>
+    <string name="keyWordHint">请输入待搜索的关键词</string>
+    <string name="keyWord"> </string>
+    <string name="ok">确定</string>
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.
