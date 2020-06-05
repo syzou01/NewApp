@@ -49,6 +49,8 @@ public class RateActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate);
+        Log.i(TAG, "onCreate: ");
+
 
         rmb = (EditText) findViewById(R.id.rmb);
         show = (TextView) findViewById(R.id.show);
@@ -259,6 +261,57 @@ public class RateActivity extends AppCompatActivity implements View.OnClickListe
             e.printStackTrace();
         }
         return  bundle;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i(TAG, "onResume: ");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i(TAG, "onRestart: ");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i(TAG, "onPause: ");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i(TAG, "onStop: ");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i(TAG, "onDestroy: ");
+    }
+
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        String scorea = ((TextView)findViewById(R.id.score1)).getText().toString();
+        String scoreb = ((TextView)findViewById(R.id.score2)).getText().toString();
+
+        Log.i(TAG, "onSaveInstanceState: ");
+        outState.putString("teama_score",scorea);
+        outState.putString("teamb_score",scoreb);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        String scorea = savedInstanceState.getString("teama_score");
+        String scoreb = savedInstanceState.getString("teamb_score");
+
+        Log.i(TAG, "onRestoreInstanceState: ");
+        ((TextView)findViewById(R.id.score1)).setText(scorea);
+        ((TextView)findViewById(R.id.score2)).setText(scoreb);
     }
 
 }
