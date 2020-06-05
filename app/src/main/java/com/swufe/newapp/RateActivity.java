@@ -1,6 +1,7 @@
 package com.swufe.newapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -63,9 +64,9 @@ public class RateActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void openOne(View btn){
-        //打开一个页面Activity
-        Log.i("open", "openOne: ");
-        Intent hello = new Intent(this, MainActivity.class);
-        startActivity(hello);
+        //打开一个网页
+        Uri uri = Uri.parse("http://www.baidu.com");    //设置跳转的网站
+        Intent web = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(web);
     }
 }

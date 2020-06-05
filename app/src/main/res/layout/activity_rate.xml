@@ -45,10 +45,10 @@
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/openoe"
+        android:id="@+id/openone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="openOne"
-        android:text="openMain" />
+        android:text="openBaidu" />
 
 </LinearLayout>
