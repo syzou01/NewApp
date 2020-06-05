@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Menu;
@@ -19,13 +21,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.DecimalFormat;
 
-public class RateActivity extends AppCompatActivity implements View.OnClickListener {
+public class RateActivity extends AppCompatActivity implements View.OnClickListener,Runnable {
 
+    Handler handler;
     private TextView mTextView;
     private final String TAG = "Rate";
     private float dollarRate = 0.1f;
     private float euroRate = 0.2f;
     private float wonRate = 0.3f;
+
     EditText rmb;
     TextView show;
 
@@ -47,7 +51,19 @@ public class RateActivity extends AppCompatActivity implements View.OnClickListe
         Log.i(TAG, "onCreate: sp euroRate=" + euroRate);
         Log.i(TAG, "onCreate: sp wonRate=" + wonRate);
 
+        Thread t = new Thread(this);
+        t.start();
 
+        handler = new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                if(msg.what==5){
+
+                    Log.i(TAG,"handleMessage:"+msg.obj);
+                }
+                super.handleMessage(msg);
+            }
+        }; //重写方法，要有;
     }
 
     @Override
@@ -134,5 +150,23 @@ public class RateActivity extends AppCompatActivity implements View.OnClickListe
 
         //startActivity(config);
         startActivityForResult(config, 1);
+    }
+
+    @Override
+    public void run() {
+        Log.i(TAG,"run:run()...");
+        //当前停止两秒钟（演示）
+        for (int i=1;i<3;i++){
+            Log.i(TAG,"run: i="+i);
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        Message msg = handler.obtainMessage(5);
+        //msg.obj = "Hello from run()";
+        msg.obj = "HELLO!";
+        handler.sendMessage(msg);
     }
 }
