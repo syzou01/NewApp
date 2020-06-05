@@ -56,8 +56,6 @@ public class RateActivity extends AppCompatActivity implements View.OnClickListe
 
         Log.i(TAG, "onCreate: ");
 
-
-
         rmb = (EditText) findViewById(R.id.rmb);
         show = (TextView) findViewById(R.id.show);
 
@@ -189,6 +187,8 @@ public class RateActivity extends AppCompatActivity implements View.OnClickListe
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId()==R.id.menu_config){
             Openconfig();
+        }else if(item.getItemId()==R.id.menu_open_list){
+            Openlist();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -202,6 +202,15 @@ public class RateActivity extends AppCompatActivity implements View.OnClickListe
         Log.i(TAG, "openOne: dollarRate=" + dollarRate);
         Log.i(TAG, "openOne: euroRate=" + euroRate);
         Log.i(TAG, "openOne: wonRate=" + wonRate);
+
+        //startActivity(config);
+        startActivityForResult(config, 1);
+    }
+
+    private void Openlist() {
+        Intent config = new Intent(this, RateListActivity.class);
+
+        Log.i(TAG, "Opened List");
 
         //startActivity(config);
         startActivityForResult(config, 1);
