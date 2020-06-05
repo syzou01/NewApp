@@ -11,6 +11,17 @@
         <string name="team1_label">TeamA</string>
         <string name="team2_label">TeamB</string>
         <string name="title_activity_score_count">ScoreCountActivity</string>
+        <string name="title_activity_rate">RateActivity</string>
+        <string name="btn_label">Button</string>
+        <string name="btn_dollar_label">Dollar</string>
+        <string name="btn_euro_label">Euro</string>
+        <string name="btn_won_label">Won</string>
+        <string name="rmb_hint_label">Input RMB</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello!</string>
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.
