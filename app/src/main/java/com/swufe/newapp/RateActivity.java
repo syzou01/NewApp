@@ -64,9 +64,8 @@ public class RateActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void openOne(View btn){
-        //打开一个网页
-        Uri uri = Uri.parse("http://www.baidu.com");    //设置跳转的网站
-        Intent web = new Intent(Intent.ACTION_VIEW, uri);
-        startActivity(web);
+        //打开拨号
+        Intent dial = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:87092320"));
+        startActivity(dial);
     }
 }
