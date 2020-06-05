@@ -5,11 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.DecimalFormat;
@@ -65,17 +68,7 @@ public class RateActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void openOne(View btn){
-        Intent config = new Intent(this,RatecfgActivity.class);
-        config.putExtra("dollar_rate_key",dollarRate);
-        config.putExtra("euro_rate_key",euroRate);
-        config.putExtra("won_rate_key",wonRate);
-
-        Log.i(TAG, "openOne: dollarRate=" + dollarRate);
-        Log.i(TAG, "openOne: euroRate=" + euroRate);
-        Log.i(TAG, "openOne: wonRate=" + wonRate);
-
-        //startActivity(config);
-        startActivityForResult(config,1);
+        Openconfig();
     }
 
     @Override
@@ -94,4 +87,31 @@ public class RateActivity extends AppCompatActivity implements View.OnClickListe
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.rate,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==R.id.menu_config){
+            Openconfig();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void Openconfig() {
+        Intent config = new Intent(this, RatecfgActivity.class);
+        config.putExtra("dollar_rate_key", dollarRate);
+        config.putExtra("euro_rate_key", euroRate);
+        config.putExtra("won_rate_key", wonRate);
+
+        Log.i(TAG, "openOne: dollarRate=" + dollarRate);
+        Log.i(TAG, "openOne: euroRate=" + euroRate);
+        Log.i(TAG, "openOne: wonRate=" + wonRate);
+
+        //startActivity(config);
+        startActivityForResult(config, 1);
+    }
 }
