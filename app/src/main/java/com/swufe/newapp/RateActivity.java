@@ -208,7 +208,7 @@ public class RateActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void Openlist() {
-        Intent config = new Intent(this, RateListActivity.class);
+        Intent config = new Intent(this, MyListActivity.class);
 
         Log.i(TAG, "Opened List");
 

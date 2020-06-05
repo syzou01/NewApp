@@ -1,32 +1,32 @@
 <resources>
-        <string name="app_name">SecondApp</string>
-        <string name="tempName">Temperature Convert</string>
-        <string name="hint">Please Enter degree centigrade</string>
-        <string name="convert">Convert To Fehrenheit Degree</string>
-        <string name="result">"The Result is: "</string>
-        <string name="btn_reset_label">Reset</string>
-        <string name="btn3_label">+3 points</string>
-        <string name="btn2_label">+2 points</string>
-        <string name="btn1_label">+1 point</string>
-        <string name="team1_label">TeamA</string>
-        <string name="team2_label">TeamB</string>
-        <string name="title_activity_score_count">ScoreCountActivity</string>
-        <string name="title_activity_rate">RateActivity</string>
-        <string name="btn_label">Button</string>
-        <string name="btn_dollar_label">Dollar</string>
-        <string name="btn_euro_label">Euro</string>
-        <string name="btn_won_label">Won</string>
-        <string name="rmb_hint_label">Input RMB</string>
-        <string name="btn_save_label">SAVE</string>
-        <string name="btn_opencfg_label">Config</string>
+    <string name="app_name">SecondApp</string>
+    <string name="tempName">Temperature Convert</string>
+    <string name="hint">Please Enter degree centigrade</string>
+    <string name="convert">Convert To Fehrenheit Degree</string>
+    <string name="result">"The Result is: "</string>
+    <string name="btn_reset_label">Reset</string>
+    <string name="btn3_label">+3 points</string>
+    <string name="btn2_label">+2 points</string>
+    <string name="btn1_label">+1 point</string>
+    <string name="team1_label">TeamA</string>
+    <string name="team2_label">TeamB</string>
+    <string name="title_activity_score_count">ScoreCountActivity</string>
+    <string name="title_activity_rate">RateActivity</string>
+    <string name="btn_label">Button</string>
+    <string name="btn_dollar_label">Dollar</string>
+    <string name="btn_euro_label">Euro</string>
+    <string name="btn_won_label">Won</string>
+    <string name="rmb_hint_label">Input RMB</string>
+    <string name="btn_save_label">SAVE</string>
+    <string name="btn_opencfg_label">Config</string>
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.
     -->
     <string name="hello_world">Hello!</string>
-        <string name="setting">setting</string>
-        <string name="openList">openList</string>
-        <!--
+    <string name="setting">setting</string>
+    <string name="openList">openList</string>
+    <!--
             This string is used for square devices and overridden by hello_world in
             values-round/strings.xml for round devices.
             -->

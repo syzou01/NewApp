@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".RateListActivity"></activity>
+        <activity android:name=".MyListActivity"></activity>
+        <activity android:name=".RateListActivity" />
         <activity android:name=".RatecfgActivity" />
         <!--
          <uses-library
