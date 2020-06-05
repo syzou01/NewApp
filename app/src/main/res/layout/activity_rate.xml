@@ -43,4 +43,12 @@
         android:text="@string/btn_won_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/openoe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="openOne"
+        android:text="openMain" />
+
 </LinearLayout>

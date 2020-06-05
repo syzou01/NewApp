@@ -1,5 +1,6 @@
 package com.swufe.newapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -59,5 +60,12 @@ public class RateActivity extends AppCompatActivity implements View.OnClickListe
         }else{
             show.setText(df.format(r*wonRate));
         }
+    }
+
+    public void openOne(View btn){
+        //打开一个页面Activity
+        Log.i("open", "openOne: ");
+        Intent hello = new Intent(this, MainActivity.class);
+        startActivity(hello);
     }
 }
