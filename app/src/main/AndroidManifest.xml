@@ -28,7 +28,7 @@
             android:value="true" />
 
         <activity
-            android:name=".RateActivity"
+            android:name=".RateActivity" android:screenOrientation="portrait"
             android:label="@string/title_activity_rate"
             tools:ignore="Instantiatable">
             <intent-filter>
